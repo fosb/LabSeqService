@@ -1,10 +1,11 @@
 package org.labseq;
 
+import java.math.BigInteger;
 import java.util.Hashtable;
 
 public class Labseq {
 
-    private static Hashtable<Integer, Integer> cachedValues = new Hashtable<>();
+    private static Hashtable<BigInteger, BigInteger> cachedValues = new Hashtable<>();
 
     /**
      * Computes the nth value of the labseq sequence using iteration
@@ -25,27 +26,27 @@ public class Labseq {
         }
     }
 
-    public static int cachedCompute(int n){
+    public static BigInteger cachedCompute(BigInteger n){
 
-        switch (n){
-            case 0, 2:
-                return 0;
-
-            case 1, 3:
-                return 1;
-
-            default:
-                if (cachedValues.containsKey(n)){
-                    return cachedValues.get(n);
-                }
-                if (!cachedValues.containsKey(n-4)){
-                    cachedValues.put(n-4, compute(n-4));
-                }
-                if (!cachedValues.containsKey(n-3)){
-                    cachedValues.put(n-3, compute(n-3));
-                }
-                return cachedValues.get(n-4) + cachedValues.get(n-3);
+        if (n.compareTo(new BigInteger("0")) == 0 || n.compareTo(new BigInteger("2")) == 0){
+            return new BigInteger("0");
         }
+        if (n.compareTo(new BigInteger("1")) == 0 || n.compareTo(new BigInteger("3")) == 0){
+            return new BigInteger("1");
+        }
+
+        if (cachedValues.containsKey(n)){
+            return cachedValues.get(n);
+        }
+        BigInteger nMinus4 = n.subtract(new BigInteger("4"));
+        if (!cachedValues.containsKey(nMinus4)){
+            cachedValues.put(nMinus4, cachedCompute(nMinus4));
+        }
+        BigInteger nMinus3 = n.subtract(new BigInteger("3"));
+        if (!cachedValues.containsKey(nMinus3)){
+            cachedValues.put(nMinus3, cachedCompute(nMinus3));
+        }
+        return cachedValues.get(nMinus4).add(cachedValues.get(nMinus3));
     }
 
 }

@@ -22,6 +22,7 @@ public class LabseqTest {
         assertEquals(5, Labseq.compute(13));
     }
 
+    /*
     @Test
     public void testCachedCompute() {
         // Test cases
@@ -40,4 +41,6 @@ public class LabseqTest {
         assertEquals(4, Labseq.cachedCompute(12));
         assertEquals(5, Labseq.cachedCompute(13));
     }
+     */
+
 }

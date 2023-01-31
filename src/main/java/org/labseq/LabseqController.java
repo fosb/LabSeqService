@@ -2,20 +2,22 @@ package org.labseq;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
+
 @RestController
 public class LabseqController {
     /**
      * Endpoint that receives a number and returns the value of l(n) for the given input
      * @param inputNumber the input number
-     * @return the value of l(n) for the given input
+     * @return the value of l(inputNumber) for the given input
      */
-    @GetMapping("/labseq/{n}")
-    public int getLabseqValue(@PathVariable int n) {
-        return Labseq.compute(n);
+    @GetMapping("/labseq/{inputNumber}")
+    public String getLabseqValue(@PathVariable String inputNumber) {
+        return Labseq.cachedCompute(new BigInteger(inputNumber)).toString();
     }
 
     @GetMapping("/labseq")
-    public int getLabseqValue2(@RequestParam int inputNumber) {
-        return Labseq.compute(inputNumber);
+    public String getLabseqValue2(@RequestParam String inputNumber) {
+        return Labseq.cachedCompute(new BigInteger(inputNumber)).toString();
     }
 }
