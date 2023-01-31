@@ -40,15 +40,4 @@ public class Labseq {
         return ln;
     }
 
-    /**
-     * Main method to print out the first `sequenceLength` values of the `labseq` sequence.
-     *
-     * @param args Command line arguments (not used)
-     */
-    public static void main(String[] args) {
-        final int sequenceLength = 20;
-        for (int i = 0; i <= sequenceLength; i++) {
-            System.out.println("l(" + i + ") = " + compute(i));
-        }
-    }
 }
