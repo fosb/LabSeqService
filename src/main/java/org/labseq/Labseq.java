@@ -1,43 +1,51 @@
 package org.labseq;
 
+import java.util.Hashtable;
+
 public class Labseq {
+
+    private static Hashtable<Integer, Integer> cachedValues = new Hashtable<>();
+
     /**
      * Computes the nth value of the labseq sequence using iteration
      * @param n the index of the value to be computed
      * @return the nth value of the labseq sequence
      */
-    public static int compute(int n) {
-        // base cases for n = 0, 1, 2, 3
-        if (n == 0) {
-            return 0;
-        }
-        if (n == 1) {
-            return 1;
-        }
-        if (n == 2) {
-            return 0;
-        }
-        if (n == 3) {
-            return 1;
-        }
+    public static int compute(int n){
 
-        // initialize variables to store previous 4 terms of the sequence
-        int lnMinusFour = 0;
-        int lnMinusThree = 1;
-        int lnMinusTwo = 0;
-        int lnMinusOne = 1;
-        int ln = 0;
+        switch (n){
+            case 0, 2:
+                return 0;
 
-        // loop to compute nth value as sum of (n - 4)th and (n - 3)th values
-        for (int i = 4; i <= n; i++) {
-            ln = lnMinusFour + lnMinusThree;
-            lnMinusFour = lnMinusThree;
-            lnMinusThree = lnMinusTwo;
-            lnMinusTwo = lnMinusOne;
-            lnMinusOne = ln;
+            case 1, 3:
+                return 1;
+
+            default:
+                return compute(n-4) + compute(n-3);
         }
+    }
 
-        return ln;
+    public static int cachedCompute(int n){
+
+        switch (n){
+            case 0, 2:
+                return 0;
+
+            case 1, 3:
+                return 1;
+
+            default:
+                if (cachedValues.containsKey(n)){
+                    return cachedValues.get(n);
+                }
+                if (!cachedValues.containsKey(n-4)){
+                    cachedValues.put(n-4, compute(n-4));
+                }
+                if (!cachedValues.containsKey(n-3)){
+                    cachedValues.put(n-3, compute(n-3));
+                }
+                return cachedValues.get(n-4) + cachedValues.get(n-3);
+        }
     }
 
 }
