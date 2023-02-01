@@ -11,6 +11,12 @@ You can run your application using:
 ./mvnw compile quarkus:dev
 ```
 
+You can run the tests using:
+
+```shell script
+./mvnw test
+```
+
 You can then use the service from localhost:8080.
 
 ## API Documentation
