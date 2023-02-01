@@ -10,12 +10,32 @@ import static org.hamcrest.CoreMatchers.is;
 public class LabSeqControllerTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testLabsecComputeEndpoint() {
         given()
-          .when().get("/hello")
+          .when().get("/labseq/0")
           .then()
              .statusCode(200)
-             .body(is("Hello from RESTEasy Reactive"));
+             .body(is("0"));
+
+        given()
+                .when().get("/labseq/1")
+                .then()
+                .statusCode(200)
+                .body(is("1"));
+
+        given()
+                .when().get("/labseq/9")
+                .then()
+                .statusCode(200)
+                .body(is("2"));
+
+        given()
+                .when().get("/labseq/13")
+                .then()
+                .statusCode(200)
+                .body(is("5"));
     }
+
+
 
 }
