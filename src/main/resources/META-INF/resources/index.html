@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>LabSec REST Endpoint Example</title>
+</head>
+<body>
+<label for="inputNumber">Enter a number:</label>
+<input type="text" id="inputNumber" name="inputNumber">
+<button id="submit" type="submit">Submit</button>
+<div>
+    <span id="result">
+
+    </span>
+</div>
+<script>
+    const button = document.getElementById("submit");
+
+    button.addEventListener("click", function() {
+        const input = document.getElementById("inputNumber");
+        fetch("/labseq/" + input.value)
+        .then(response => {
+            if (response.ok) {
+              return response.text();
+            }
+            throw new Error("Network response was not ok");
+        })
+        .then(response => {
+            const con = document.getElementById("result");
+            con.innerText = response;
+        })
+    });
+
+
+</script>
+</body>
+</html>
