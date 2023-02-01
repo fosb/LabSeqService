@@ -5,17 +5,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+    .flex-container {
+        margin: 30px;
+        min-height: 300px;
+        display: flex;
+        border: 1px solid black;
+        justify-content: center; /* align item horizontally */
+        align-items: center; /* align item vertically */
+    }
+    .item {
+        width: 100px;
+        padding: 20px;
+        background: #b4bac0;
+    }
+    #result {
+        overflow: auto;
+        }
+</style>
 </head>
 <body>
-<form method="modal">
+<form method="dialog" class="flex-container">
     <div class="form-group">
         <label for="inputNumber">Enter a number:</label>
         <input type="text" id="inputNumber" name="inputNumber">
-        <button id="submit" type="submit">Submit</button>
+        <button class="btn btn-primary" id="submit" type="submit">Submit</button>
     </div>
 </form>
 
-<div>
+<div class="flex-container">
     <span id="result">
     </span>
 </div>
