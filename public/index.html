@@ -16,7 +16,6 @@
 
     button.addEventListener("click", function() {
         const input = document.getElementById("inputNumber");
-        let result;
         fetch("/labseq/" + input.value)
         .then(response => {
             if (response.ok) {
