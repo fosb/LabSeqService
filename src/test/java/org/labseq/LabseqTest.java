@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.labseq.Labseq;
 
+import java.math.BigInteger;
+
 public class LabseqTest {
     @Test
     public void testCompute() {
@@ -24,25 +26,25 @@ public class LabseqTest {
         assertEquals(5, Labseq.compute(13));
     }
 
-    /*
+
     @Test
     public void testCachedCompute() {
         // Test cases
-        assertEquals(0, Labseq.cachedCompute(0));
-        assertEquals(1, Labseq.cachedCompute(1));
-        assertEquals(0, Labseq.cachedCompute(2));
-        assertEquals(1, Labseq.cachedCompute(3));
-        assertEquals(1, Labseq.cachedCompute(4));
-        assertEquals(1, Labseq.cachedCompute(5));
-        assertEquals(1, Labseq.cachedCompute(6));
-        assertEquals(2, Labseq.cachedCompute(7));
-        assertEquals(2, Labseq.cachedCompute(8));
-        assertEquals(2, Labseq.cachedCompute(9));
-        assertEquals(3, Labseq.cachedCompute(10));
-        assertEquals(4, Labseq.cachedCompute(11));
-        assertEquals(4, Labseq.cachedCompute(12));
-        assertEquals(5, Labseq.cachedCompute(13));
+        assertEquals(new BigInteger("0"), Labseq.cachedCompute(new BigInteger("0")));
+        assertEquals(new BigInteger("1"), Labseq.cachedCompute(new BigInteger("1")));
+        assertEquals(new BigInteger("0"), Labseq.cachedCompute(new BigInteger("2")));
+        assertEquals(new BigInteger("1"), Labseq.cachedCompute(new BigInteger("3")));
+        assertEquals(new BigInteger("1"), Labseq.cachedCompute(new BigInteger("4")));
+        assertEquals(new BigInteger("1"), Labseq.cachedCompute(new BigInteger("5")));
+        assertEquals(new BigInteger("1"), Labseq.cachedCompute(new BigInteger("6")));
+        assertEquals(new BigInteger("2"), Labseq.cachedCompute(new BigInteger("7")));
+        assertEquals(new BigInteger("2"), Labseq.cachedCompute(new BigInteger("8")));
+        assertEquals(new BigInteger("2"), Labseq.cachedCompute(new BigInteger("9")));
+        assertEquals(new BigInteger("3"), Labseq.cachedCompute(new BigInteger("10")));
+        assertEquals(new BigInteger("4"), Labseq.cachedCompute(new BigInteger("11")));
+        assertEquals(new BigInteger("4"), Labseq.cachedCompute(new BigInteger("12")));
+        assertEquals(new BigInteger("5"), Labseq.cachedCompute(new BigInteger("13")));
     }
-     */
+
 
 }
